@@ -1,0 +1,105 @@
+\model{Variables}
+% Based on Model 1 of "Activity 02 - Declaration and Assignments" by Helen Hu
+
+Most programs store and manipulate data values.
+We use \emph{variables} to give values meaningful names.
+The following code \emph{declares} three variables and \emph{assigns} them (using the \java{=} operator).
+Each variable is stored in the computer's memory, represented by the boxes on the right.
+
+\vspace{1em}
+\hfill
+\begin{minipage}[t]{0.5\textwidth}
+
+\textbf{Java code}
+\vspace{1ex}
+
+\begin{javalst}
+int dollars;
+int cents;
+double grams;
+
+dollars = 1;
+cents = 90;
+grams = 3.5;
+\end{javalst}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+
+\textbf{Computer memory}
+\vspace{1em}
+
+\var{dollars}{1}
+\par\vspace{1em}
+\var{cents}{90}
+\par\vspace{1em}
+\var{grams}{3.5}
+
+\end{minipage}
+
+
+\quest{10 min}
+
+
+\Q Identify the Java \emph{keyword} used in a variable declaration to indicate
+
+\begin{enumerate}
+\item an integer: \ans[5em]{int}
+\item a real number: \ans[5em]{double}
+\end{enumerate}
+
+
+\Q Consider numbers of dollar bills, cents, and grams.
+Which of these units only makes sense as an integer, and why?
+
+\begin{answer}
+Cents makes sense (ha ha) only as an integer, because at the end of the day, you can't pay with a fractional amount. (It is possible to make a similar argument for dollars, but not for grams.)
+\end{answer}
+
+
+\Q What would you expect the following statements to print out?
+
+\begin{enumerate}
+\item \java{System.out.println(dollars);}          \ans[3em]{1}
+\item \java{System.out.println(cents);}\texttt{~~} \ans[3em]{90}
+\item \java{System.out.println(grams);}\texttt{~~} \ans[3em]{3.5}
+\end{enumerate}
+
+
+\Q In the previous question, how does the third printed line (c) differ from the first two?
+
+\begin{answer}
+The third line prints a double, and the first two print an integer.
+\end{answer}
+
+
+\Q \label{vardecl}
+What do you think is the purpose of a variable declaration?
+
+\begin{answer}
+It tells the computer how to interpret and display the value.
+\end{answer}
+
+
+\Q What will be output by the following code, and why?
+
+\begin{minipage}[t]{0.33\linewidth}
+
+\vspace{-2ex}
+\begin{javalst}
+double one;
+one = 1;
+System.out.println(one);
+\end{javalst}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.66\linewidth}
+
+\begin{answer}[3em]
+The output is 1.0, because {\tt one} is a {\tt double}.
+The type of variable determines the output format.
+\end{answer}
+
+\end{minipage}

@@ -1,0 +1,125 @@
+\model{Linked Lists}
+
+Linked structures ``chain'' elements using references.
+Each element of the list is called a \emph{node}.
+
+\vspace{1ex}
+\begin{minipage}{0.40\linewidth}
+\begin{javalst}
+    public class Node {
+
+        private int value;
+        private Node next;
+        ...
+    }
+\end{javalst}
+\end{minipage}
+\hfill
+\begin{minipage}{0.58\linewidth}
+\begin{javalst}
+    Node node3 = new Node(14, null);
+    Node node2 = new Node(6, node3);
+    Node numbers = new Node(22, node2);
+\end{javalst}
+\includegraphics[scale=0.35]{list1.png}
+\end{minipage}
+\vspace{1em}
+
+This organization allows fast insertions/deletions near the beginning. For example, to add 8:
+
+\vspace{1ex}
+\begin{minipage}{0.48\linewidth}
+\begin{javalst}
+    Node temp = new Node(8, numbers);
+
+
+
+    numbers = temp;
+\end{javalst}
+\end{minipage}
+\hfill
+\begin{minipage}{0.50\linewidth}
+\includegraphics[scale=0.35]{list2.png}
+\end{minipage}
+\vspace{1em}
+
+Instead of working with nodes directly, we can design a wrapper class to implement a list:
+
+\vspace{1ex}
+\begin{minipage}{0.40\linewidth}
+\begin{javalst}
+    public class MyList {
+
+        private int size;
+        private Node head;
+        ...
+    }
+\end{javalst}
+\end{minipage}
+\hfill
+\begin{minipage}{0.58\linewidth}
+\begin{javalst}
+    MyList numbers = new MyList();
+    numbers.addAtStart(14);
+    numbers.addAtStart(6);
+    numbers.addAtStart(22);
+\end{javalst}
+\includegraphics[scale=0.35]{list3.png}
+\end{minipage}
+\vspace{1ex}
+
+
+\quest{15 min}
+
+
+\Q In \java{MyList}, how many assignment operations are required to add 14 {\it at the front} of an empty list? Note that creating a \java{Node} takes two assignments (one for \java{value} and one for \java{next}).
+
+\begin{answer}[3em]
+3 operations: 1 to assign the \java{value}, 1 to assign null to \java{next}, and 1 to assign the reference of the new Node to the head variable.
+\end{answer}
+
+
+\Q In \java{MyList}, how many operations are required to add 22 at the front, after 14 and 6 have been added?
+
+\begin{answer}[3em]
+Still just 3, in fact the same as the first insert. Notice that no shifting is required.
+\end{answer}
+
+
+\Q How many operations are required to add an element {\it at the end} of \java{MyList} with 3 elements?
+
+\begin{answer}[3em]
+5 operations: 3 to find where the new element goes (by following references to the end of the list), one to create the new node, and one to change the reference of the previous last element.
+\end{answer}
+
+
+\Q How much memory is needed to store each element in the \java{LinkedList}?
+How does that amount compare with using an \java{ArrayList}?
+
+\begin{answer}
+Linked lists need to store two references per node (one for \java{value} and one for \java{next}).
+In contrast, array lists only need to store the \java{value} references.
+At a conceptual level, array lists take up about half as much space as linked lists (not counting empty cells and object overhead).
+\end{answer}
+
+
+\Q \label{LinksAreBad}
+Discuss why \java{LinkedList} is a poor choice of \java{List} in the program below.
+
+\begin{quote}
+\jafile{LinksAreBad.java}
+\end{quote}
+\vspace{-1em}
+
+\begin{answer}
+Each insertion in the middle of the list takes $n/2$ operations (where $n$ is the current size of the list) in order to find the \java{next} references to assign.
+\end{answer}
+
+
+\Q \label{key3}
+If your program requires a \java{List} collection, how would you decide which implementation to use? (\java{ArrayList} vs ~\java{LinkedList})
+
+\begin{answer}
+If adding items at the end and accessing random elements, use ArrayList.
+If inserting items in the middle and only accessing at the two ends, use LinkedList.
+\end{answer}

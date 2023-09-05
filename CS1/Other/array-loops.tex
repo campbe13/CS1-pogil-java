@@ -1,0 +1,183 @@
+%  \item Write a for loop that iterates the contents of an array.
+
+%Students will have the most trouble with \ref{array-loops.tex}, particularly if writing code on paper.
+%One way to jump start the process is to report out before teams write their solution.
+%Give each team 2--3 minutes to develop an algorithm and have the presenter describe it to the class.
+%Then have students complete \ref{pairwiseMax} and \ref{finalGrade} as an exercise outside of class.
+
+
+\model{Arrays and Loops ~ (optional)}
+
+The real power of arrays is the ability to process them using loops, i.e., performing the same task for multiple elements.
+
+\begin{javalst}
+    for (int i = 0; i < array.length; i++) {
+       // ... process array[i] ...
+    }
+\end{javalst}
+
+Here are two specific examples:
+
+\begin{javalst}
+    // set all of the elements of x to -1.0
+    double[] x = new double[100];
+    for (int i = 0; i < x.length; i++) {
+        x[i] = -1.0;
+    }
+    // sum the elements of scores
+    int sum = 0;
+    for (int i = 0; i < scores.length; i++) {
+        sum += scores[i];
+    }
+\end{javalst}
+
+
+\quest{15 min}
+
+
+\Q What is the value of \java{array} and \java{accumulator} at the end of the following code?
+Trace the loop by hand in the space below.
+
+\begin{javalst}
+int[] array = {5, 26, 13, 12, 37, 15, 16, 4, 1, 3};
+int accumulator = 0;
+for (int i = 0; i < array.length; i++) {
+    if (array[i] % 2 == 1 && i + 1 < array.length) {
+        array[i] *= -1;
+        accumulator += array[i+1];
+    }
+}
+\end{javalst}
+
+\begin{answer}[12em]
+\begin{tabular}{|C{20pt}|C{40pt}|C{40pt}|}
+\hline
+i & array[i] & accum \\
+\hline
+\hline
+0 & 5 & 0 \\
+\hline
+1 & 26 & 26 \\
+\hline
+2 & 13 & 26 \\
+\hline
+3 & 12 & 38 \\
+\hline
+4 & 37 & 38 \\
+\hline
+\end{tabular}
+\hspace{20pt}
+\begin{tabular}{|C{20pt}|C{40pt}|C{40pt}|}
+\hline
+i & array[i] & accum \\
+\hline
+\hline
+5 & 15 & 53 \\
+\hline
+6 & 16 & 69 \\
+\hline
+7 & 4 & 69 \\
+\hline
+8 & 1 & 69 \\
+\hline
+9 & 3 & 72 \\
+\hline
+\end{tabular}
+\hspace{20pt}
+\begin{minipage}{175pt}
+\begin{javalst}
+array:
+  { -5, 26, -13, 12, -37,
+   -15, 16,   4, -1,   3}
+
+accumulator:
+  72
+\end{javalst}
+\end{minipage}
+\end{answer}
+
+
+\newpage
+
+\Q \label{pairwiseMax}
+Implement the following method that creates and returns a new array.
+
+\begin{javalst}
+/**
+ * Return a new array containing the pairwise maximum value of
+ * the arguments. For each subscript i, the return value at [i]
+ * will be the larger of x[i] and y[i].
+ *
+ * @param x an array of double values
+ * @param y an array of double values
+ * @return pairwise max of x and y
+ */
+public static double[] pairwiseMax(double[] x, double[] y) {
+\end{javalst}
+
+\vspace{-2ex}
+\begin{answer}[11em]
+\begin{javaans}
+    double[] z = new double[x.length];
+    for (int i = 0; i < x.length; i++) {
+        if (x[i] > y[i]) {
+            z[i] = x[i];
+        } else {
+            z[i] = y[i];
+        }
+    }
+    return z;
+\end{javaans}
+\end{answer}
+\ifdefined\Teacher
+\vspace{-2ex}
+\else
+\vspace{-2em}
+\fi
+
+\begin{javalst}
+}
+\end{javalst}
+
+
+\Q \label{finalGrade}
+Implement the following method that reads through two integer arrays.
+
+\begin{javalst}
+/**
+ * Computes the final average grade for a student. The labs are
+ * worth 40% and the exams are worth 60%. All scores range from
+ * 0 to 100, inclusive.
+ *
+ * @param labs the student's lab scores
+ * @param exams the student's exam scores
+ * @return weighted average of all scores
+ */
+public static double finalGrade(int[] labs, int[] exams) {
+\end{javalst}
+
+\vspace{-2ex}
+\begin{answer}[13em]
+\begin{javaans}
+    int labSum = 0;
+    for (int score : labs) {
+        labSum += score;
+    }
+    int examSum = 0;
+    for (int score : exams) {
+        examSum += score;
+    }
+    double labGrade = 1.0 * labSum / labs.length;
+    double examGrade = 1.0 * examSum / exams.length;
+    return 0.40 * labGrade + 0.60 * examGrade;
+\end{javaans}
+\end{answer}
+\ifdefined\Teacher
+\vspace{-2ex}
+\else
+\vspace{-2em}
+\fi
+
+\begin{javalst}
+}
+\end{javalst}

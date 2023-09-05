@@ -1,0 +1,59 @@
+% comment out for student version
+\ifdefined\Student\relax\else\def\Teacher{}\fi
+
+\documentclass[12pt]{article}
+
+\title{Introduction to Java}
+\author{Chris Mayfield and Helen Hu}
+\date{Summer 2021}
+
+\input{../../cspogil.sty}
+
+\begin{document}
+
+\maketitle
+
+In this course, you will work in teams of 3--4 students to learn new concepts.
+This activity will introduce you to the process.
+We'll also take a first look at how to store data in Java programs.
+
+%\rolenames
+
+\guide{
+  \item Describe the responsibility of each team role.
+  \item Identify components of the "hello world" program.
+  \item Write Java code to declare int and double variables.
+  \item Explain what it means to assign a value to a variable.
+}{
+  \item Leveraging prior knowledge and experience of other students. (Teamwork)
+}{
+This activity is designed for the first day or week of CS1.
+There are no prerequisites.
+During this activity, it's important to explain/model the instructor's role in an active learning classroom.
+For large classes, it may take a bit longer than expected to organize teams.
+
+The meta activity refers to \github{Handouts/role-cards-mayfield.pdf}{Role Cards}, which ideally should be printed out on a different color of card stock (one set per team).
+You might want to have each team complete a \github{Handouts/team-report.pdf}{Team Report} at the end of this activity.
+
+One strategy for reporting out \ref{hello-world.tex} is to have presenters of nearby teams swap answers and discuss any differences.
+Introduce the terms \emph{documentation} (see \ref{javadoc}) and \emph{newline} (see \ref{println}).
+
+Questions that ask students to explain (or to describe) are good for reporting out.
+It's important that teams hear multiple perspectives on these concepts.
+Introduce the terms \emph{data type} and \emph{operator}, and point out that \emph{assignment} is not the same as \emph{equality}.
+
+On \ref{assignment.tex}, it may be necessary to explain that there are only two variables.
+The boxes show the state of memory over time, as the corresponding statements are executed.
+
+Key questions: \ref{javadoc}, \ref{vardecl}, \ref{xgets}
+
+Source files: \src{Act01}{HelloWorld.java}
+}
+
+\input{../Meta/team-roles.tex}
+\input{hello-world.tex}
+\input{variables.tex}
+\smallskip
+\input{assignment.tex}
+
+\end{document}

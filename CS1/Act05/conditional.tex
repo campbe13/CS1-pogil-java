@@ -1,0 +1,193 @@
+\model{Conditional Operators}
+% based on Model 3 of Activity 4 Boolean by Helen Hu
+
+Boolean expressions, like \java{written > problem} and \java{teamwork < 75.0}, can be combined using the \emph{conditional operators}:
+
+\begin{center}
+\begin{tabular}{|C{100pt}|C{100pt}|}
+\hline
+\tr Operator & \tr Meaning \\
+\hline
+\java{!}  & not \\
+\hline
+\java{&&} & and \\
+\hline
+\java{||} & or \\
+\hline
+\end{tabular}
+\end{center}
+
+For example, \java{written > problem && teamwork < 75.0} is false, because \java{teamwork} is not less than \java{75.0}.
+(Both conditions need to be true in order for \java{&&} to be true.)
+
+\bigskip
+
+The following table summarizes the result of \java{&&}, \java{||}, and \java{!} for all possible inputs.
+The variables \java{p} and \java{q} represent conditions like \java{written > problem} and \java{teamwork < 75.0}.
+
+\begin{center}
+\begin{tabular}{|C{50pt}|C{50pt}||C{50pt}|C{50pt}|C{50pt}|}
+\hline
+\tr \java{p} & \tr \java{q} & \tr \java{p && q} & \tr \java{p || q} & \tr \java{!p} \\
+\hline
+false & false & false & false & true  \\ \hline  % \multirow{2}{*}{true}  \\ \cline{1-4}
+false & true  & false & true  & true  \\ \hline  %                        \\ \hline
+true  & false & false & true  & false \\ \hline  % \multirow{2}{*}{false} \\ \cline{1-4}
+true  & true  & true  & true  & false \\ \hline  %                        \\ \hline
+\end{tabular}
+\end{center}
+
+
+\quest{20 min}
+
+
+\Q Consider the following variables:
+
+\begin{quote}
+\begin{javalst}
+double initiative = 74.2;
+double analytical = 71.9;
+double workEthic  = 70.8;
+boolean hired = true;
+boolean fired = false;
+\end{javalst}
+\end{quote}
+
+What are the results (true or false) of the following expressions?
+
+\begin{quote}
+\begin{tabular}{|l|l|}
+\hline
+\tr Expression & \tr Result \\
+\hline
+\java{!fired} & \ans[3em]{true} \\
+\hline
+\java{!(workEthic < initiative)} & \ans[3em]{false} \\
+\hline
+\java{workEthic < 71.0 && 71.0 < initiative} & \ans[3em]{true} \\
+\hline
+\java{initiative < 70.0 || workEthic > 70.0} & \ans[3em]{true} \\
+\hline
+\java{fired || workEthic < 50.0} & \ans[3em]{false} \\
+\hline
+\java{analytical < initiative && fired} & \ans[3em]{false} \\
+\hline
+\java{hired && !fired} & \ans[3em]{true} \\
+\hline
+\end{tabular}
+\end{quote}
+
+
+\Q Write a boolean expression that \ldots
+
+\begin{enumerate}
+\item uses \java{initiative}, \java{analytical}, and \java{!}, and evaluates to false. \ans[12em]{!(analytical < initiative)}
+\item uses \java{analytical}, \java{workEthic}, and \java{!}, and evaluates to true. \ans[12em]{!(workEthic > analytical)}
+\item uses any variable(s), and evaluates to false. \ans[12em]{fired}
+\item uses any variable(s), and evaluates to true. \ans[12em]{hired}
+\end{enumerate}
+
+
+\Q \label{key2}
+Using your answers to the previous question, write a boolean expression ``\java{p && q}'' where \java{p} is your answer to part a) and \java{q} is your answer to part b).
+
+\begin{enumerate}
+\item Your expression: \ans[30em]{\java{!(analytical < initiative) && !(workEthic > analytical)}}
+\item Result of ~\java{p && q}: \ans{false (no matter what)}
+\end{enumerate}
+
+
+\comment{
+Relational operators (\java{<}, \java{>}, and \java{==}) are evaluated before conditional operators (\java{!}, \java{&&}, and \java{||}).
+When multiple conditional operators are used, Java evaluates \java{!} first, then \java{&&}, and finally \java{||}.
+}
+
+
+%\Q \label{truthtable} Complete the following table, which explores all possible values for \java{p} and \java{q}:
+%
+%\begin{center}
+%\begin{tabular}{|C{50pt}|C{50pt}|C{50pt}|C{50pt}|C{50pt}|}
+%\hline
+%\tr \java{p} & \tr \java{q} & \tr \java{p && q} & \tr \java{p || q} & \tr \java{!p} \\
+%\hline
+%false & false & \ans[3em]{false} & \ans[3em]{false} & \ans[3em]{true}  \\
+%\hline
+%false & true  & \ans[3em]{false} & \ans[3em]{true}  & \ans[3em]{true}  \\
+%\hline
+%true  & false & \ans[3em]{false} & \ans[3em]{true}  & \ans[3em]{false} \\
+%\hline
+%true  & true  & \ans[3em]{true}  & \ans[3em]{true}  & \ans[3em]{false} \\
+%\hline
+%\end{tabular}
+%\end{center}
+
+
+\Q Show the intermediate result of each operator below.
+In other words, show your work as you evaluate the code in the same order that Java would.
+
+\begin{center}
+\java{!(initiative < analytical) && workEthic > analytical}
+\vspace{1em}
+
+\begin{tabular}{|C{50pt}|C{70pt}|C{200pt}|C{70pt}|}
+\hline
+\tr & \tr Operator & \tr Expression & \tr Result \\
+\hline
+1st & \java{<}  & \java{initiative < analytical} & false \\
+\hline
+2nd & \ans[3em]{\java{!}}  & \ans{\java{!}false} & \ans[3em]{true} \\
+\hline
+3rd & \ans[3em]{\java{>}}  & \ans{\java{workEthic > analytical}} & \ans[3em]{false} \\
+\hline
+4th & \ans[3em]{\java{&&}} & \ans{true \java{&&} false} & \ans[3em]{false} \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\Q Change the parentheses in the original expression (from the previous question) so that the \java{&&} is evaluated before the \java{!}.
+Then remove any unnecessary parentheses.
+
+\begin{enumerate}
+\item Expression: \ans[30em]{\java{!(initiative < analytical && workEthic > analytical)}}
+\item New result: \ans[5em]{true}
+\end{enumerate}
+
+
+\Q Review the table from \ref{\currfilename} for evaluating \java{&&} and \java{||}.
+Looking only at the \java{p} and \java{&&} columns, when is it necessary to examine \java{q} to determine how \java{p && q} should be evaluated?
+
+\begin{answer}
+You only need to look at \java{q} when \java{p} is true.
+If \java{p} is false, you know the expression will be false.
+\end{answer}
+
+
+\Q Review the table from \ref{\currfilename} for evaluating \java{&&} and \java{||}.
+Looking only at the \java{p} and \java{||} columns, when is it necessary to examine \java{q} to determine how \java{p || q} should be evaluated?
+
+\begin{answer}
+You only need to look at \java{q} when \java{p} is false.
+If \java{p} is true, you know the expression will be true.
+\end{answer}
+
+
+\Q \label{key3}
+In Java, \java{&&} and \java{||} are \emph{short circuit} operators, meaning they evaluate only what is necessary.
+If the expression \java{p} is more likely to be true than the expression \java{q}, which one should you place on the left of each operator to avoid doing extra work?
+
+\begin{enumerate}
+\item left of the \java{&&} expression:
+\ans[25em]{\java{q} --- if it's false, then \java{p} won't be evaluated}
+\item left of the \java{||} expression:
+\ans[25em]{\java{p} --- if it's true, then \java{q} won't be evaluated}
+\end{enumerate}
+
+
+\Q What is the result of the following expressions?
+\begin{enumerate}
+\item \java{1 + 0 > 0 && 1 / 0 > 0}
+\ans[24em]{java.lang.ArithmeticException: / by zero}
+\item \java{1 + 0 > 0 || 1 / 0 > 0}
+\ans[24em]{true}
+\end{enumerate}

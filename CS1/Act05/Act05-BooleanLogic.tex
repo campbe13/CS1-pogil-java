@@ -1,0 +1,53 @@
+% comment out for student version
+\ifdefined\Student\relax\else\def\Teacher{}\fi
+
+\documentclass[12pt]{article}
+
+\title{Boolean Logic}
+\author{Chris Mayfield and Helen Hu}
+\date{Summer 2021}
+
+\input{../../cspogil.sty}
+
+\begin{document}
+
+\maketitle
+
+The primitive data type \java{boolean} has two values: \java{true} and \java{false}.
+Boolean expressions are built using \emph{relational operators} and \emph{conditional operators}.
+
+\rolenames
+
+\guide{
+  \item Recognize the value of developing process skills.
+  \item Evaluate boolean expressions with relational operators (<, >, <=, >=, ==, !=).
+  \item Explain the difference between assignment (=) and equality (==) operators.
+  \item Evaluate boolean expressions that involve comparisons with \&\&, ||, and !.
+}{
+  \item Evaluating complex logic expressions based on operator precedence. (Critical Thinking)
+}{
+The meta activity is ultimately about process skills and should help with student buy-in.
+If you are using the \github{Handouts/role-cards-mayfield.pdf}{Role Cards}, have students look at the definitions on the reverse side.
+Each activity targets specific ``process skill goals'' from these categories.
+Point out that ``Technical skills'' is ranked tenth, after all the others.
+
+At the beginning of \ref{relational.tex}, you might instruct students to check their work using JShell or a similar tool.
+Give students about three minutes to fill in the table without using a computer.
+If computers are not available, show them the actual results interactively on the projector.
+Have teams discuss any of their predictions that were incorrect.
+
+When reporting out, ask students to explain what \emph{expressions} are and how they differ from \emph{statements}.
+Reinforce what it means to \emph{evaluate} an expression (i.e., compute a single value) versus \emph{execute} a statement (i.e., run an entire line of code).
+
+During \ref{conditional.tex}, explain that the variables $p$ and $q$ are often used to represent logic values in discrete math.
+Make sure students understand that ! is a \emph{unary} operator, and that \java{&&} and \java{||} are \emph{binary} operators.
+Refer back to the meta activity to reinforce the importance of students communicating with each other as a team.
+
+Key questions: \ref{key1}, \ref{key2}, \ref{key3}
+}
+
+\input{../Meta/employers.tex}
+\input{relational.tex}
+\input{conditional.tex}
+
+\end{document}

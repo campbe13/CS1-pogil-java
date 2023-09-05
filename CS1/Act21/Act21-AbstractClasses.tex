@@ -1,0 +1,48 @@
+% comment out for student version
+\ifdefined\Student\relax\else\def\Teacher{}\fi
+
+\documentclass[12pt]{article}
+
+\title{Abstract Classes}
+\author{Chris Mayfield and Nathan Sprague}
+\date{Summer 2021}
+
+\input{../../cspogil.sty}
+
+\begin{document}
+
+\maketitle
+
+In software engineering, it's common for different groups of programmers to design ``contracts'' that spell out how their software interacts.
+
+\rolenames
+
+\guide{
+  \item Generalize multiple classes that have overlapping code.
+  \item Explain the requirements of abstract classes and methods.
+  \item Discuss how polymorphism can be done using interfaces.
+}{
+  \item Analyze compiler error messages to reach a conclusion. (Critical Thinking)
+}{
+Term introduction: concrete class, dynamic binding
+
+Do not provide \textit{LoudToy.java} (the code for Model 2) until after Model 1.
+Students will develop their own version of this class in \ref{LoudToyV1} and later compare it with Model 2.
+
+Key questions: \ref{key1}, \ref{key2}, \ref{key3}
+
+Source files:
+\src{Act21}{ToySheep.java},
+\src{Act21}{ToyRobot.java},
+\src{Act21}{LoudToy.java}, % WAIT TO DOWNLOAD
+\src{Act21}{Rechargeable.java},
+\src{Act21}{CellPhone.java}
+}
+
+\input{model1.tex}
+\newpage
+\input{model2.tex}
+\newpage
+\input{model3.tex}
+
+\end{document}

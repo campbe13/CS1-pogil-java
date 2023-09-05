@@ -1,0 +1,56 @@
+% comment out for student version
+\ifdefined\Student\relax\else\def\Teacher{}\fi
+
+\documentclass[12pt]{article}
+
+\title{Linked Structures}
+\author{C.~Mayfield, D.~Weikle, and N.~Sprague}
+\date{Summer 2021}
+
+\input{../../cspogil.sty}
+
+\begin{document}
+
+\maketitle
+
+The \textit{Java Collections Framework} provides many useful interfaces and implementations (classes). %, and algorithms (methods).
+They all serve the same purpose: to store a collection of objects.
+Each type of collection has its trade-offs, and there is no one ``best solution'' for every storage problem.
+%If arrays were good enough, Java wouldn't need a collections framework.
+
+%\medskip
+%Today you will learn one of the most fundamental concepts of data structures: whether to store elements in contiguous memory locations (arrays), or link elements together using references.
+
+\rolenames
+
+\guide{
+  \item Show the contents of a List after adding and removing elements.
+  \item Summarize performance trade-offs for ArrayList and LinkedList.
+}{
+  \item Making connections between list diagrams and source code. (Information Processing)
+}{
+\ref{list-interface.tex} should be a quick review based on students' prior experience with \java{ArrayList}s.
+Report out \ref{listtable} by projecting (or drawing) the table on the board and asking presenters to fill in rows.
+
+Within the first five minutes of \ref{array-lists.tex}, report out on \ref{arrayopers} to make sure students understand what is meant by ``operations'' (assignments).
+Note that \ref{linked-lists.tex} continues this idea to include assigning references.
+Avoid discussing low-level details such as memory management and object overhead.
+After reporting out \ref{ArraysAreBad} and \ref{LinksAreBad}, run one of them for about 10 seconds.
+Then terminate the program, change the list type in \java{main}, and rerun the program.
+
+At the end of \ref{linked-lists.tex}, it is helpful to show the \github{CS1/Act22/util}{Java library source code} for List, ArrayList, and LinkedList.
+Help students make connections from the models in this activity to their actual implementation in Java.
+For example, you can display the private methods of LinkedList and ask presenters to discuss their team's answer to \ref{LinksAreBad}.
+
+Key questions: \ref{key1}, \ref{key2}, \ref{key3}
+
+Source files: \src{Act22}{ArraysAreBad.java}, \src{Act22}{LinksAreBad.java}
+}
+
+\input{list-interface.tex}
+\newpage
+\input{array-lists.tex}
+\newpage
+\input{linked-lists.tex}
+
+\end{document}

@@ -1,0 +1,246 @@
+%comment out for student version
+\ifdefined\Student\relax\else\def\Teacher{}\fi
+
+\documentclass[12pt,twoside,openright]{report}
+
+\title{Activities for CS1 in Java}
+\author{Chris Mayfield}
+\date{Summer 2021}
+
+\input{../cspogil.sty}
+
+\usepackage{pdfpages}
+\usepackage{pax}
+
+% remove page numbers
+%\makeatletter
+%\let\ps@plain\ps@empty
+%\makeatother
+
+% dots in toc chapters
+\usepackage{tocloft}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% include activity pdf
+\newcommand{\act}[3]{
+  \cleardoublepage\phantomsection
+  \addcontentsline{toc}{chapter}{#2}
+  \addtocontents{toc}{\nopagebreak\bigskip{#3}\par}
+  \ifdefined\Teacher
+    \includepdf[pages=-, pagecommand={}]{#1_Teacher.pdf}
+  \else
+    \includepdf[pages=-, pagecommand={}]{#1_Student.pdf}
+  \fi
+}
+
+\begin{document}
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\pdfbookmark{Title Page}{title}
+\begin{titlepage}
+\null\vfill
+\centering
+
+\includegraphics{../IntroCS.pdf}
+
+\makeatletter
+
+\vspace*{4em}
+\huge \textbf{\@title}
+
+\vspace*{2pt}
+\ifdefined\Teacher
+\color{DarkRed}
+\Large \textbf{Instructor's Guide with Solutions}
+\else
+\color{ForestGreen}
+\Large \textbf{Student Workbook}
+\fi
+\normalcolor
+
+\vspace*{2em}
+\large \@author
+
+\vspace*{4pt}
+\small With contributions from Helen Hu, Dee Weikle, Stoney Jackson, \\ Debra Duke, Nancy Harris, Clif Kussmaul, and Nathan Sprague
+
+\vspace*{2em}
+\Large \@date
+
+\makeatother
+
+\normalsize
+
+\vspace*{4em}
+\includegraphics{../by-nc-sa.png}
+
+\vspace*{1ex}
+Copyright \textcopyright\ 2021.
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+\ifdefined\Teacher
+\vspace*{2em}
+\includegraphics[height=4em]{Overleaf.png}
+
+\vspace*{1ex}
+Source documents available in Overleaf
+\fi
+
+\vfill\null
+\end{titlepage}
+
+\cleardoublepage
+\pdfbookmark{Preface}{pre}
+\input{preface.tex}
+
+\cleardoublepage
+\pdfbookmark{\contentsname}{toc}
+\tableofcontents
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+\clearpage\phantomsection
+\addcontentsline{toc}{chapter}{Role Cards}
+\includepdf[pages=-]{../Handouts/role-cards-appendix.pdf}
+
+\clearpage\phantomsection
+\addcontentsline{toc}{chapter}{Team Report}
+\includepdf[pages=-]{../Handouts/team-report.pdf}
+
+\cleardoublepage
+\pagestyle{plain}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\renewcommand{\indent}{\hspace*{1.5em}}
+\newcommand{\mod}[1]{\indent Model~#1~~}
+
+%\addtocontents{toc}{\newpage}
+
+\act{Act01/Act01-Introduction}{Introduction to Java}{
+\indent Meta Activity: Team Roles \\
+\mod{1} Hello, World! \\
+\mod{2} Variables \\
+\mod{3} Assignment
+}
+\act{Act02/Act02-Arithmetic}{Arithmetic Operators}{
+\indent Meta Activity: Group vs Team \\
+\mod{1} The \% Operator \\
+\mod{2} Dividing Numbers \\
+\mod{3} Order of Operations
+}
+\act{Act03/Act03-DataTypes}{Data Types}{
+\indent Meta Activity: Team Disruptions \\
+\mod{1} Primitive Types \\
+\mod{2} Reference Types
+}
+\act{Act04/Act04-Methods}{Multiple Methods}{
+\mod{1} Invoke and Return \\
+\mod{2} Math Methods \\
+\mod{3} Stack Diagrams
+}
+\act{Act05/Act05-BooleanLogic}{Boolean Logic}{
+\indent Meta Activity: What Employers Want \\
+\mod{1} Relational Operators \\
+\mod{2} Conditional Operators
+}
+\act{Act06/Act06-Loops}{Loops and Iteration}{
+\mod{1} Assignment \\
+\mod{2} While Loops \\
+\mod{3} For Loops
+}
+\act{Act07/Act07-Arrays}{Arrays of Numbers}{
+\indent Case Study: Panic Attack \\
+\indent Case Study: Oops! \\
+\mod{1} Array Syntax \\
+\mod{2} Array Diagrams
+}
+\act{Act08/Act08-Recursion}{Recursive Methods}{
+\mod{1} Factorial \\
+\mod{2} Summation
+}
+\act{Act09/Act09-ObjectOriented}{Object-Oriented}{
+\mod{1} Character Arrays \\
+\mod{2} Non-Static Methods \\
+\mod{3} Common Mistakes
+}
+\act{Act10/Act10-ClassesAndUML}{Classes and UML}{
+\mod{1} The Die Class \\
+\mod{2} The Circle Class \\
+\mod{3} Variable Scope
+}
+\act{Act11/Act11-DesigningClasses}{Designing Classes}{
+\mod{1} Common Methods \\
+\mod{2} Object Methods \\
+\mod{3} Credit Card
+}
+\act{Act12/Act12-ArraysOfObjects}{Arrays of Objects}{
+\mod{1} Hand of Cards \\
+\mod{2} Deck of Cards
+}
+\act{Act13/Act13-MemoryDiagrams}{Memory Diagrams}{
+\mod{1} Arrays \\
+\mod{2} Objects \\
+\mod{3} Static Variables
+}
+\act{Act14/Act14-ArrayListObjects}{ArrayList Objects}{
+\mod{1} Example Code \\
+\mod{2} Memory Diagrams \\
+\mod{3} ArrayList Methods
+}
+\act{Act15/Act15-ArraysOfArrays}{Arrays of Arrays}{
+\mod{1} Rectangular Array \\
+\mod{2} Ragged Array
+}
+\act{Act16/Act16-FileInputOutput}{File Input/Output}{
+\mod{1} Review of Scanner \\
+\mod{2} Reading from a File \\
+\mod{3} Writing to a File
+}
+\act{Act17/Act17-EnumTypes}{Enum Types}{
+\mod{1} Months of the Year \\
+\mod{2} Attributes and Methods
+}
+\act{Act18/Act18-DesigningClasses}{Designing Classes}{
+\mod{1} Repair Shop \\
+\mod{2} Class Diagram \\
+\indent Exercise: Bob's Grocery Mart
+}
+\act{Act19/Act19-ExtendingClasses}{Extending Classes}{
+\mod{1} My Big Integer \\
+\mod{2} Adding New Methods
+}
+\act{Act20/Act20-Polymorphism}{Polymorphism}{
+\mod{1} Students and Teachers \\
+\mod{2} Variable vs Object Types
+}
+\act{Act21/Act21-AbstractClasses}{Abstract Classes}{
+\mod{1} Loud Toys \\
+\mod{2} Abstract Methods \\
+\mod{3} Java Interfaces
+}
+\act{Act22/Act22-LinkedStructures}{Linked Structures}{
+\mod{1} List Interface \\
+\mod{2} Array Lists \\
+\mod{3} Linked Lists
+}
+\act{Act23/Act23-SetsAndMaps}{Sets and Maps}{
+\mod{1} Set of Strings \\
+\mod{2} Map of Team Names
+}
+\act{Act24/Act24-RecursiveDrawings}{Recursive Drawings}{
+\mod{1} Drawing and Tracing \\
+\mod{2} The ``Vee'' Tree \\
+\mod{3} Sierpiński Triangle
+}
+
+%\cleardoublepage
+%\thispagestyle{empty}
+%\begin{center}
+%\null\vfill
+%\huge\bf Appendix
+%\vfill\null
+%\end{center}
+
+\end{document}

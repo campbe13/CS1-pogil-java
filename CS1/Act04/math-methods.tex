@@ -1,0 +1,149 @@
+\model{Math Methods}
+
+Consider the following methods defined in the \java{Math} class.
+(This list isn't exhaustive; the \java{Math} class has over 90 methods in total!)
+
+\begin{center}
+\includegraphics[scale=0.90]{math-javadoc.pdf}
+\end{center}
+
+%Each of these methods is written in Java.
+The code for these methods is provided in a source file named {\it Math.java}.
+Here is what the definition of the \java{abs} method looks like:
+
+\smallskip
+\begin{javalst}
+    public static int abs(int a) {
+        // code omitted
+    }
+\end{javalst}
+\smallskip
+
+%These methods are defined in a source file named {\it Math.java} as follows:
+%
+%\smallskip
+%\begin{javalst}
+%    public static int abs(int a)
+%    public static double log(double a)
+%    public static double pow(double a, double b)
+%    public static double random()
+%    public static int subtractExact(int x, int y)
+%\end{javalst}
+%\smallskip
+
+To use a method from another source file (like {\it Math.java}), you must first specify the class name:
+
+\smallskip
+\begin{javalst}
+    value = abs(-5);       // Error: cannot find symbol
+    value = Math.abs(-5);  // correct
+\end{javalst}
+\smallskip
+
+%The period in this example is called the \emph{dot operator}. When reading the above code out loud, you would say ``math dot abs''.
+
+
+\quest{20 min}
+
+
+\Q What type of value does \java{Math.random()} return? Give an example of what a random value might look like.
+
+\begin{answer}[3em]
+It returns a random \texttt{double} value greater than or equal to 0.0 and less than 1.0.
+For example, the value 0.7851637186510342.
+\end{answer}
+
+
+\Q When {\it defining} a method (like \java{abs} or \java{log}), what do you need to specify before the method name and after the method name?
+
+\begin{answer}
+Before the name, you need to specify what type of value the method will return.
+After the name, you need to specify what values are required to use the method.
+\end{answer}
+
+
+\Q \label{methsig}
+Define a method named \java{average} that takes two integers named \java{x} and \java{y} and returns a \java{double}. Don't write any semicolons or braces.
+
+\begin{answer}[3em]
+\begin{javaans}
+public static double average(int x, int y)
+\end{javaans}
+\end{answer}
+
+
+\Q When {\it using} a method, what do you need to specify before the method name and after the method name?
+
+\begin{answer}
+Before the name, you need to specify the class name (unless the method is in the same class).
+After the name, you need to specify the required values.
+\end{answer}
+
+
+\Q For each method in \ref{\currfilename}, write a Java statement that uses the method and assigns the result to a variable.
+
+\begin{answer}[7em]
+\begin{javaans}
+answer = Math.abs(-5);
+length = Math.log(1.2);
+amount = Math.pow(3.4, 5.6);
+number = Math.random();
+result = Math.subtractExact(-78, 90);
+\end{javaans}
+\end{answer}
+
+
+\comment{
+What you wrote for Question~\ref{methsig} is called the method's \textbf{signature}.
+The variables declared inside the parentheses are called \textbf{parameters}.
+When invoking a method, the values you provide are called \textbf{arguments}.
+Since arguments will be assigned to parameters, their types must be compatible.
+}
+
+
+\Q In the table below, how many parameters and arguments does each method have?
+What is the relationship between the last two columns?
+
+\begin{center}
+\begin{tabular}{|c|C{5em}|C{5em}|}
+\hline
+\tr Method           & \tr \# Params & \tr \# Args  \\
+\hline
+\java{abs}           & \ans[3em]{1}  & \ans[3em]{1} \\
+\hline
+\java{log}           & \ans[3em]{1}  & \ans[3em]{1} \\
+\hline
+\java{pow}           & \ans[3em]{2}  & \ans[3em]{2} \\
+\hline
+\java{random}        & \ans[3em]{0}  & \ans[3em]{0} \\
+\hline
+\java{subtractExact} & \ans[3em]{2}  & \ans[3em]{2} \\
+\hline
+%\java{println}      & \ans[3em]{1}  & \ans[3em]{1} \\
+%\hline
+\end{tabular}
+\end{center}
+
+
+\Q \label{println}
+Consider the statement \java{System.out.println("Price: " + price);} where the value of \java{price} is 9.99. What is the argument that \texttt{println} receives?
+
+\begin{answer}
+\begin{javaans}
+"Price: 9.99"
+\end{javaans}
+\end{answer}
+
+
+\Q \label{printf}
+Consider the statement \java{System.out.printf("Price: \%f", price);} where the value of \java{price} is 9.99. Why does \java{println} use {\it plus} and \java{printf} use {\it comma} to specify the arguments?
+
+\begin{answer}[6em]
+The \java{println} method requires only one argument, so plus in this context means concatenate.
+The \java{printf} method requires multiple arguments: one for the format string, and others for the values to substitute.
+\end{answer}
+
+\comment{
+IMPORTANT: Never use + (string concatenation) with printf.
+You might accidentally add values to the format string itself, rather than substitute them.
+}

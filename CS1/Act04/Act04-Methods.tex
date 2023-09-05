@@ -1,0 +1,58 @@
+% comment out for student version
+\ifdefined\Student\relax\else\def\Teacher{}\fi
+
+\documentclass[12pt]{article}
+
+\title{Multiple Methods}
+\author{Chris Mayfield}
+\date{Summer 2021}
+
+\input{../../cspogil.sty}
+
+\begin{document}
+
+\maketitle
+
+Java programs are organized into \emph{classes}, each of which has one or more \emph{methods}, each of which has one or more \emph{statements}.
+Writing methods allows you to break down a complex program into smaller blocks of reusable code.
+
+\rolenames
+
+\guide{
+  \item Apply methods from the Math class based on their documentation.
+  \item Explain the syntax of a method declaration (parameters and return type).
+  \item Draw a diagram that shows the call stack at a given point of execution.
+}{
+  \item Tracing the execution of methods to determine contents of memory. (Critical Thinking)
+}{
+This activity will likely take students longer than they think it will.
+Remind managers to keep track of the time and presenters to be ready to report out.
+The recorder (or other team member) could read questions out loud to help with pacing.
+
+\ref{invoke-return.tex} includes only void methods with no parameters, so that students may focus on the flow of execution.
+For \ref{lines} and \ref{times}, do a quick check of each team's answer before they get too far along.
+Some misread or misinterpret the question and/or don't get the difference between analyzing the code statically (i.e., how many lines) vs dynamically (i.e., how many times).
+
+\ref{math-methods.tex} introduces a number of terms.
+\ref{println} and \ref{printf} are good for reporting out to reinforce the concepts of \emph{signature}, \emph{parameters}, and \emph{arguments}.
+In addition, they address a misconception: students often misuse \texttt{printf} by concatenating the arguments to the format string.
+
+\ref{stack-diagrams.tex} builds on a previous technique for drawing diagrams and memory traces (from the Data Types activity).
+You might need to remind students that memory diagrams simply include a small box to the right of each variable name.
+Have multiple teams draw their diagram for \ref{drawing} on the board to compare different ways students think about this question.
+
+Key questions: \ref{key1}, \ref{methsig}, \ref{drawing}
+
+Source files:
+\src{Act04}{Print.java},
+\src{Act04}{CtoF.java},
+\src{Act04}{Stack.java}
+}
+
+\input{invoke-return.tex}
+\newpage
+\input{math-methods.tex}
+\newpage
+\input{stack-diagrams.tex}
+
+\end{document}

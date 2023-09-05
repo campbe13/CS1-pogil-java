@@ -1,0 +1,192 @@
+\model{Primitive Types}
+
+\vspace{-1ex}
+\begin{table}[h!]
+\begin{tabularx}{\linewidth}{|X|X|X|X|l|}
+\hline
+\tr Keyword    & \tr Size & \tr Min Value          & \tr Max Value         & \tr Example              \\
+\hline
+\java{byte}    & 1 byte   & $-128$                 & $127$                 & \java{(byte) 123}        \\
+\hline
+\java{short}   & 2 bytes  & $-32,768$              & $32,767$              & \java{(short) 12345}     \\
+\hline
+\java{int}     & 4 bytes  & $-2^{31}$              & $2^{31}-1$            & \java{1234567890}        \\
+\hline
+\java{long}    & 8 bytes  & $-2^{63}$              & $2^{63}-1$            & \java{123456789012345L}  \\
+\hline
+\java{float}   & 4 bytes  & $-3.4 \times 10^{38}$  & $3.4 \times 10^{38}$  & \java{3.14159F}          \\
+\hline
+\java{double}  & 8 bytes  & $-1.8 \times 10^{308}$ & $1.8 \times 10^{308}$ & \java{3.141592653589793} \\
+\hline
+\java{boolean} & 1 byte   & N/A                    & N/A                   & \java{true}              \\
+\hline
+\java{char}    & 2 bytes  & 0                      & 65,535                & \java{'A'}               \\
+\hline
+\end{tabularx}
+\end{table}
+
+Note that 1 byte is 8 bits, i.e., eight ``ones and zeros'' in computer memory.
+Since there are only two possible values for each bit, you can represent $2^8 = 256$ possible values with 1 byte.
+
+
+\quest{15 min}
+
+
+\Q Which of the primitive types are integers? Which are floating-point?
+
+\begin{answer}
+Integers: byte, short, int, long.
+Floating-point: float, double.
+\end{answer}
+
+
+\Q Why do primitive types have ranges of values? What determines the range of the data type?
+
+\begin{answer}
+The range of values depends on the size, i.e., how many bytes are used to store the value.
+\end{answer}
+
+
+\Q Why can't computers represent every possible number in mathematics? Will they ever be able to do so?
+
+\begin{answer}
+Computers have finite memory, but there are an infinite number of numbers.
+There will always be a number larger than what computers can store.
+\end{answer}
+
+
+\Q Since a \java{byte} can represent 256 different numbers, why is its max value 127 and not 128?
+
+\begin{answer}
+One of the 256 values is the number zero. So 128 negatives, plus 1 zero, plus 127 positives equals 256 values.
+\end{answer}
+
+
+\newpage
+
+\Q \label{literals}
+What is the data type for each of the following values?
+
+\begin{quote}
+\begin{tabular}{R{4em}L{6em}R{4em}L{6em}R{4em}L{6em}}
+
+1.14159   & \ans[5em]{double}  &
+7.2E-4    & \ans[5em]{double}  &
+-128      & \ans[5em]{int}     \\
+
+0         & \ans[5em]{int}     &
+0.0       & \ans[5em]{double}  &
+\qs{0}\qs & \ans[5em]{char}    \\
+
+-1.0F     & \ans[5em]{float}   &
+-13L      & \ans[5em]{long}    &
+false     & \ans[5em]{boolean} \\
+
+123       & \ans[5em]{int}     &
+\qs{H}\qs & \ans[5em]{char}    &
+true      & \ans[5em]{boolean} \\
+
+\end{tabular}
+\end{quote}
+
+
+\Q \label{allowed}
+Based on the examples below, when does Java allow you to assign one type of primitive variable to another?
+
+% Based on example from Stoney Jackson
+\begin{multicols}{2}
+\begin{javalst}
+    int int_ = 3;
+    long long_ = 3L;
+    float float_ = 3.0F;
+    double double_ = 3.0;
+    
+    int_ = int_;
+    int_ = long_;      // illegal
+    int_ = float_;     // illegal
+    int_ = double_;    // illegal
+    
+    long_ = int_;
+    long_ = long_;
+    long_ = float_;    // illegal
+    long_ = double_;   // illegal
+
+    float_ = int_;
+    float_ = long_;
+    float_ = float_;
+    float_ = double_;  // illegal
+    
+    double_ = int_;
+    double_ = long_;
+    double_ = float_;
+    double_ = double_;
+    
+    int_ = '0';
+    int_ = false;      // illegal
+    double_ = '0';
+    double_ = false;   // illegal
+\end{javalst}
+\end{multicols}
+
+\vspace{-1em}
+\begin{answer}
+The types have to be compatible (e.g., you can't assign numeric to boolean), and you can only assign from smaller to larger (e.g., from float to double, or int to double).
+\end{answer}
+
+
+\Q Given the following variable declarations, which of the assignments are not allowed?
+
+\begin{quote}
+\begin{multicols}{3}
+
+\begin{javalst}
+byte miles;
+short minutes;
+int checking;
+long days;
+float total;
+double sum;
+boolean flag;
+char letter;
+\end{javalst}
+
+\columnbreak
+
+\begin{javalst}
+checking = 56000;
+total = 0;
+sum = total;
+total = sum;
+checking = miles;
+sum = checking;
+flag = minutes;
+days = '0';
+\end{javalst}
+
+\columnbreak
+
+\begin{answer}[10em]
+All are okay except:
+\\ \hspace*{1em} \texttt{total = sum;}
+\\ \hspace*{1em} \texttt{flag = minutes;}
+%\\ \hspace*{1em} \texttt{days = \chr{0};}
+
+\medskip
+Note that assigning \chr{0} to \java{days} is legal,
+but the value is actually stored as 48L (Unicode for the digit zero character).
+\end{answer}
+
+\end{multicols}
+\end{quote}
+
+
+%\Q Based on your answer to \ref{allowed}, list all possible assignments for \java{int}, \java{long}, \java{float}, and \java{double} values in this format: \java{long} $\gets$ \java{int}
+%
+%\begin{answer}[5em]
+%\setlength{\tabcolsep}{12pt}
+%\begin{tabular}{llll}
+%&  long   $\gets$ int  &                       &                        \\
+%&  float  $\gets$ int  &  float  $\gets$ long  &                        \\
+%&  double $\gets$ int  &  double $\gets$ long  &  double $\gets$ float  \\
+%\end{tabular}
+%\end{answer}

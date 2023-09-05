@@ -1,0 +1,53 @@
+% comment out for student version
+\ifdefined\Student\relax\else\def\Teacher{}\fi
+
+\documentclass[12pt]{article}
+
+\title{Arrays of Objects}
+\author{Chris Mayfield}
+\date{Summer 2021}
+
+\input{../../cspogil.sty}
+
+\begin{document}
+
+\maketitle
+
+With arrays and objects, you can represent pretty much any type of data.
+It's not only possible to have arrays of objects, but also objects of arrays, objects of objects, arrays of arrays, arrays of objects of arrays, and so forth.
+
+\rolenames
+
+\guide{
+  \item Explain the difference of instantiating an array and an object.
+  \item Rewrite a for loop (over an array) using an enhanced for loop.
+  \item Use enhanced for loops to construct and search arrays of objects.
+}{
+  \item Developing algorithms for constructing and searching arrays. (Problem Solving)
+}{
+The first two objectives apply to \ref{hand-of-cards.tex}.
+Students should understand the differences in syntax (i.e., using square brackets vs parentheses) as well as what happens behind the scenes (i.e., \texttt{new} invokes a constructor for objects but not arrays).
+
+Keep an eye on what students write down for \ref{random}.
+If their answer is superficial, challenge them to be more specific.
+Report out on \ref{foreach}, and ask students why ``\java{i}'' is not an appropriate variable name for this loop (``\java{i}'' typically stands for index or iteration).
+
+This activity makes use of a simple \java{Card} class.
+It stores both the rank and suit as integers, but it does not perform any validation in the constructor.
+Consider projecting \textit{Card.java} while you facilitate \ref{deck-of-cards.tex}.
+%Question~\ref{cnstr} asks students to implement a default value replacement, and it can be extended by having students define and call setter methods.
+Keep an eye on answers to the first question, in case teams get off track.
+
+\ref{build} and \ref{sort} are the most important questions.
+Make sure students have enough time to work through the algorithms.
+Consider reporting out after \ref{search} to bring the class back in sync, since there is so much time allocated for \ref{deck-of-cards.tex}.
+
+Key questions: \ref{random}, \ref{build}, \ref{sort}
+
+Source files: \src{Act12}{Card.java}, \src{Act12}{Main.java}
+}
+
+\input{hand-of-cards.tex}
+\input{deck-of-cards.tex}
+
+\end{document}
